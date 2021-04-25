@@ -17,14 +17,38 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                test: /\.module\.(scss|sass|css)$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: true,
+                            modules: {
+                                namedExport: true,
+                            },
+                        },
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            esModule: true,
+                            modules: {
+                                namedExport: true,
+                            },
+                        },
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
+                    }
+                ],
             },
             {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
-                ],
+                test: /\.(scss|sass|css)$/,
+                exclude: /\.module\.(scss|sass|css)$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
             },
         ],
     },
