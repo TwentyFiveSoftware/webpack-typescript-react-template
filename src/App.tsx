@@ -1,10 +1,10 @@
 import React from 'react';
 import * as styles from './styles/App.module.scss';
 
-const App = () => {
+const App = (): JSX.Element => {
     return (
         <div className={styles.app}>
-            App
+            <h1>App</h1>
         </div>
     );
 };
