@@ -1,5 +1,5 @@
 import React from 'react';
-import * as styles from './styles/App.module.scss';
+import * as styles from 'Styles/App.module.scss';
 
 const App = (): JSX.Element => {
     return (
