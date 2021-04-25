@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     entry: './src/index.tsx',
@@ -74,4 +75,8 @@ module.exports = {
         new ESLintPlugin({ extensions: ['tsx', 'ts', 'js'] }),
         new StylelintPlugin({ fix: false }),
     ],
+    optimization: {
+        minimize: true,
+        minimizer: [new CssMinimizerPlugin(), '...'],
+    },
 };
