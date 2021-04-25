@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
     entry: './src/index.tsx',
@@ -65,5 +66,6 @@ module.exports = {
         new HtmlWebpackPlugin({ template: './public/index.html' }),
         new MiniCssExtractPlugin(),
         new ESLintPlugin({ extensions: ['tsx', 'ts', 'js'] }),
+        new StylelintPlugin({ fix: false }),
     ],
 };
