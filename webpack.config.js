@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/index.tsx',
@@ -74,6 +75,15 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new ESLintPlugin({ extensions: ['tsx', 'ts', 'js'] }),
         new StylelintPlugin({ fix: false }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'public/**/*',
+                    to: '[name][ext]',
+                    globOptions: { ignore: ['**/index.html'] },
+                },
+            ],
+        }),
     ],
     optimization: {
         minimize: true,
