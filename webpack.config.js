@@ -52,6 +52,12 @@ module.exports = {
                 exclude: /\.module\.(scss|sass|css)$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
             },
+            {
+                test: /\.(jpg|png|webp|jpeg|svg)$/,
+                use: {
+                    loader: 'url-loader',
+                },
+            },
         ],
     },
     resolve: {
