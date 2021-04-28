@@ -6,10 +6,8 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-module.exports = {
+const config = {
     entry: './src/index.tsx',
-    mode: 'development',
-    devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
     },
@@ -66,8 +64,6 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
         alias: {
             Styles: path.resolve(__dirname, 'src/styles/'),
-            Components: path.resolve(__dirname, 'src/components/'),
-            Types: path.resolve(__dirname, 'src/types/'),
         },
     },
     output: {
@@ -94,4 +90,13 @@ module.exports = {
         minimize: true,
         minimizer: [new CssMinimizerPlugin(), '...'],
     },
+};
+
+module.exports = (env, argv) => {
+    if (argv.mode === 'development') {
+        config.devtool = 'source-map';
+        config.optimization.minimize = false;
+    }
+
+    return config;
 };

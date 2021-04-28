@@ -2,8 +2,8 @@
     "name": "webpack-typescript-react-template",
     "version": "1.0.0",
     "scripts": {
-        "start": "webpack serve --open",
-        "build": "webpack",
+        "start": "webpack serve --open --mode=development",
+        "build": "webpack --mode=production",
         "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
         "lint:code": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
         "lint:style": "stylelint --fix src/**/*.{css,scss,sass}"
